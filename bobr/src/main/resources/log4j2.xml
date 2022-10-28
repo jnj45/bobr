@@ -4,6 +4,7 @@
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d %5p [%c] %m%n" />
         </Console>
+        
     </Appenders>
     <Loggers>
         <Logger name="java.sql" level="DEBUG" additivity="false">

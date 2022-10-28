@@ -1157,6 +1157,8 @@ public class EgovBatchInfoServiceImpl extends EgovAbstractServiceImpl implements
 
 	private void insertBatchBean(String batchId, List<String> beanIdList) throws Exception
 	{
+		
+		//등록할 빈들 중에 중복 빈id가 없는지 체크
 		List<BatchBeanVO> beanList = new ArrayList<BatchBeanVO>();
 
 		LOGGER.debug("beanIdList={}", beanIdList);
@@ -1178,11 +1180,13 @@ public class EgovBatchInfoServiceImpl extends EgovAbstractServiceImpl implements
 			beanList.add(batchBean);
 		}
 
+		//시스템에 등록된 빈id와 중복되지 않는지 체크
 		BatchInfoVO searchVO = new BatchInfoVO();
 		searchVO.setBeanList(beanList);
+		searchVO.setBatchId(batchId); //2022.10.28 lyj 추가
 
 		List<BatchBeanVO> beanExistList = batchInfoDAO.selectBatchBeanList(searchVO);
-			LOGGER.debug("▶▶▶beanExistList=[{}]", beanExistList);
+		LOGGER.debug("▶▶▶beanExistList=[{}]", beanExistList);
 
 		if (CollectionUtils.isEmpty(beanExistList))
 		{

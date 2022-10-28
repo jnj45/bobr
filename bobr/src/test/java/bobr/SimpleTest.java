@@ -6,7 +6,7 @@ public class SimpleTest {
 
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-		System.out.println(EgovFileScrty.encryptPassword("qwqwerer", "batchuser"));
+		System.out.println(EgovFileScrty.encryptPassword("admin1212!", "admin"));
 	}
 
 }
